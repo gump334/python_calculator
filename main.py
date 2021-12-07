@@ -48,18 +48,21 @@ operations = {
   "/": divide
 }
 
-num1 = int(input("What's the first number?: "))
-for key in operations:
-  print(key)
-operation_symbol = input("Pick a operation from the line above: ")
-num2 = int(input("What's the second number?: "))
-calculation_function = operations[operation_symbol]
-first_answer = calculation_function(num1, num2)
-
-print(f"{num1} {operation_symbol} {num2} = {first_answer}")
-
-operation_symbol = input("Pick a operation from the line above: ")
-num3 = int(input("What's the second number?: "))
-calculation_function = operations[operation_symbol]
-second_answer = calculation_function(calculation_function(num1, num2), num3)
-print(f"{first_answer} {operation_symbol} {num3} = {second_answer}")
+def calculator():
+  num1 = int(input("What is the first number?: "))
+  while True:
+    for key in operations:
+      print(key)
+    operation_symbol = input("Pick a operation from the line above: ")
+    num2 = int(input("What's the next number?: "))
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num1, num2)
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
+    keep_calculating = input("do you want to continue calculating?: yes or no ").lower()
+    if keep_calculating == "yes":
+      num1 = answer
+      continue   
+    else:
+      False
+      calculator()
+calculator()
