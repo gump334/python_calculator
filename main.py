@@ -58,11 +58,13 @@ def calculator():
     calculation_function = operations[operation_symbol]
     answer = calculation_function(num1, num2)
     print(f"{num1} {operation_symbol} {num2} = {answer}")
-    keep_calculating = input("do you want to continue calculating?: yes or no ").lower()
+    keep_calculating = input("do you want to continue calculating? yes no=restart or any key=end: ").lower()
     if keep_calculating == "yes":
       num1 = answer
       continue   
-    else:
-      False
+    elif keep_calculating == "no":
       calculator()
+    else:
+      print("Thank you for using a calculator created by Terrell from Black Cloud Geeks ")
+      break
 calculator()
